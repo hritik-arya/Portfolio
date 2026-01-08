@@ -1,378 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hritik Arya's Portfolio</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Portfolio | Professional</title>
+<meta name="description" content="Professional Cybersecurity Portfolio showcasing skills, experience, projects, certifications, and blog writeups.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        <style>
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
+<style>
+:root {
+  --bg-dark: #0b0505;
+  --bg-card: #140707;
+  --primary: #ff0033;
+  --primary-glow: rgba(255,0,51,0.6);
+  --text-light: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border: #2a0d0d;
+}
 
-        body{
-            background-color: rgb(0, 0, 33);
-            color: white;
-            }
+.blue-theme {
+  --bg-dark: #050b14;
+  --bg-card: #071426;
+  --primary: #0099ff;
+  --primary-glow: rgba(0,153,255,0.6);
+  --text-light: #e5f0ff;
+  --text-muted: #9db4d6;
+  --border: #0d223a;
+}
 
-        nav{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            height: 80px;
-            background-color: rgb(18, 18, 62);
-        }
-    
-        nav ul{
-            display: flex;
-            justify-content: center;
-        }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+body { 
+  background: var(--bg-dark); 
+  color: var(--text-light); 
+  line-height:1.6; 
+  scroll-behavior:smooth; 
+  transition: background 0.6s ease, color 0.6s ease;
+}
+a { text-decoration:none; color:inherit; }
 
-        nav ul li{
-            list-style: none;
-            margin: 0 23px;
-        }
+header {
+  position: sticky; top:0; display:flex; justify-content:space-between; align-items:center;
+  padding:1rem; background: rgba(11,15,25,0.9); backdrop-filter: blur(8px);
+  border-bottom:1px solid var(--border); z-index:1000;
+}
 
-        nav ul li a:hover{
-            color: rgb(153, 153, 226);
-            font-size: 1.01rem;
-        }
+.logo { font-weight:700; font-size:1.2rem; color:var(--primary); }
+.nav-links a { margin-left:1.5rem; color:var(--text-muted); font-size:0.95rem; position:relative; }
+.nav-links a::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:var(--primary); transition:width 0.3s; }
+.nav-links a:hover::after { width:100%; }
 
-        nav ul li a{
-            color: white;
-            text-decoration: none;
-        }
+.theme-toggle { 
+  position: relative; overflow: hidden;
+  background: var(--primary); color:#fff; border:none; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; 
+  box-shadow:0 0 15px var(--primary-glow); transition: all 0.4s ease;
+}
 
-        main hr{
-            border:0;
-            background: #9c97f1;
-            height:1.2px;
-            margin: 60px 84px;
-        }
+.hero { max-width:1100px; margin:auto; padding:5rem 1rem 4rem; display:grid; grid-template-columns:1.2fr 0.8fr; gap:2rem; align-items:center; }
+.hero h1 { font-size:2.6rem; line-height:1.2; transition: color 0.6s ease; }
+.hero span { color:var(--primary); transition: color 0.6s ease; }
+.hero p { margin-top:1rem; color:var(--text-muted); max-width:500px; transition: color 0.6s ease; }
+.hero-btns { margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap; }
 
-        .left{
-            font-size: 1.5rem;
-        }
+.btn { padding:0.7rem 1.3rem; border-radius:6px; border:1px solid var(--primary); font-size:0.9rem; cursor:pointer; transition:all 0.3s ease; }
+.btn.primary { background:var(--primary); color:#000; font-weight:600; box-shadow:0 0 15px var(--primary-glow); }
+.btn.secondary { background:transparent; color:var(--primary); }
+.btn:hover { transform: translateY(-3px) scale(1.03); box-shadow:0 0 20px var(--primary-glow); }
 
-        .firstSection{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin:130px 0;
-        }
+section { max-width:1100px; margin:auto; padding:4rem 1rem; }
+section h2 { font-size:1.9rem; margin-bottom:1.5rem; position:relative; }
+section h2::after { content:''; display:block; width:60px; height:3px; background:var(--primary); margin-top:6px; }
 
-        .firstSection > div{
-            width: 30%;
-        }
+.grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:1.2rem; }
 
-        .leftSection .buttons{
-            padding:50px 0;
-        }
+.card {
+  background: var(--bg-card); border:1px solid var(--border); padding:1.5rem; border-radius:12px; 
+  transition: all 0.6s ease, transform 0.6s ease, opacity 0.6s ease;
+  opacity:0; transform: translateY(20px);
+  position: relative; overflow: hidden;
+}
+.card::before {
+  content: ''; position:absolute; inset:0; background: linear-gradient(120deg, transparent, var(--primary-glow)15), transparent; transform:translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.card:hover::before { transform:translateX(100%); }
+.card:hover { transform: translateY(-8px); box-shadow: 0 0 25px var(--primary-glow); }
 
-        .leftSection{
-            font-size: 3rem;
-        }
+.card h3 { color:var(--primary); font-size:1.05rem; margin-bottom:0.6rem; }
+.card p { color:var(--text-muted); font-size:0.9rem; }
 
-        .leftSection .btn {
-            padding: 12px;
-            background: #1e2167;
-            color: white;
-            border: 2px solid white;
-            border-radius: 6px;
-            font-size: 20px;
-            cursor: pointer;    
-        }
+footer { text-align:center; padding:1.5rem; border-top:1px solid var(--border); color:var(--text-muted); font-size:0.8rem; }
 
-        .RightSection img{
-            width:80%;
-        }
-        
-        .purple{
-            color:rgb(170, 107, 228);
-        }
+@media (max-width:768px){ .hero { grid-template-columns:1fr; } .nav-links { display:none; } }
 
-        .text-gray{
-            color:gray;
-        }   
+.fade-in { opacity:1 !important; transform: translateY(0) !important; }
 
-        #element{
-            color:rgb(170, 107, 228);
-        }
+.ripple {
+  position:absolute; border-radius:50%; transform:scale(0);
+  animation: rippleEffect 0.6s linear forwards; pointer-events:none;
+}
+@keyframes rippleEffect { to { transform: scale(15); opacity:0; } }
+</style>
+</head>
+<body>
 
-        .SecondSection{
-            max-width:80vw;
-            margin:auto;
-            height: 80vh;
-        }
+<header>
+  <div class="logo">CyberSec Portfolio</div>
+  <nav class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle">Offensive</button>
+</header>
 
-        .SecondSection h1{
-            font-size: 1.9rem;
-        }
-        .SecondSection .box{
-            background: white;
-            width: 32vw;  
-            height: 2px;
-            margin: 2vw 4vw  ;
-            display: flex;
-        }
+<div class="hero">
+  <div>
+    <h1 id="heroTitle">
+      Cybersecurity <span id="heroSpan">Professional</span><br>
+    </h1>
+    <p id="heroDesc">
+      Hands-on experience in Web Application Security, Network Security, Active Directory Pentesting, VAPT, Red Teaming, and Post-Exploitation. Experienced with OWASP, PTES, and NIST-aligned security assessments.
+    </p>
+    <div class="hero-btns">
+      <a class="btn primary" href="#contact">Hire Me</a>
+      <a class="btn secondary" href="#projects">View Work</a>
+      <a class="btn primary" href="resume.pdf" download>Download Resume</a>
+    </div>
+  </div>
+</div>
 
-        .SecondSection .vertical{
-            height: 93px;
-            width: 1px;
-            background-color: white;
-            margin: 0 137px;
-        }
+<section id="skills"><h2>Technical Skills</h2><div class="grid" id="skillsGrid"></div></section>
+<section id="projects"><h2>Projects</h2><div class="grid" id="projectsGrid"></div></section>
+<section id="experience"><h2>Professional Experience</h2><div class="grid" id="experienceGrid"></div></section>
+<section id="certifications"><h2>Certifications</h2><div class="grid" id="certificationsGrid"></div></section>
+<section id="blog"><h2>Blog & Writeups</h2><div class="grid" id="blogGrid"></div></section>
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Interested in penetration testing, security training, or consulting?</p>
+    <p><strong>Email:</strong> yourname@email.com</p>
+    <p><strong>LinkedIn:</strong> linkedin.com/in/yourprofile</p>
+    <p><strong>GitHub:</strong> github.com/yourusername</p>
+  </div>
+</section>
 
-        .image-top{
-            position: relative;
-            top: 13px;
-            left: 4px;
-            width: 74px;
-            }
+<footer>© 2026 Cybersecurity Portfolio. All rights reserved.</footer>
 
-        .vertical-title{
-            position: relative;
-            top: 75px;
-            width: 150px;
-            font-size: 14px;
-            font-weight: bold;
-        }
+<script>
+const toggleBtn = document.getElementById('themeToggle');
+const body = document.body;
 
-        .vertical-desc{
-            position: relative;
-            top: 86px;
-            color: gray;
-            width: 150px;
-            font-size: 13px;
-            font-weight: bold;
-        }
+const roleData = {
+  offensive: { 
+    skills:[{title:"Web Security", desc:"OWASP Top 10, API Security, Auth Bypass"},{title:"Network & AD", desc:"Active Directory Attacks, Lateral Movement, Privilege Escalation"},{title:"Tools", desc:"Burp Suite, Nmap, Metasploit, BloodHound, Nessus"}],
+    projects:[{title:"AD Pentest Lab", desc:"Domain enumeration, privilege escalation, lateral movement, post-exploitation."},{title:"Web VAPT", desc:"OWASP Top 10, SQLi, XSS, Auth bypass."}],
+    experience:[{title:"Cybersecurity Trainer & Pen Tester", desc:"Hands-on training and VAPT for clients/students."},{title:"Freelance Consultant", desc:"Independent VAPT engagements with reporting."}],
+    certifications:[{title:"eJPT", desc:"eLearnSecurity Junior Penetration Tester"},{title:"CPTS", desc:"Certified Pen Testing Specialist"},{title:"HTB CPTS", desc:"Hack The Box CPTS"}],
+    blogs:[{title:"Bypassing WAFs", desc:"Guide on detecting and bypassing WAFs."},{title:"AD Enumeration", desc:"Post-exploitation methods for AD."},{title:"Red vs Blue Team", desc:"Insights into offensive vs defensive exercises."}],
+    hero: {
+      title:"Cybersecurity Professional",
+      role:"Penetration Tester / Security Analyst",
+      desc:"Hands-on experience in Web Application Security, Network Security, Active Directory Pentesting, VAPT, Red Teaming, and Post-Exploitation. Experienced with OWASP, PTES, and NIST-aligned security assessments."
+    }
+  },
+  defensive: { 
+    skills:[
+      {title:"Security Monitoring", desc:"SIEM, IDS/IPS, Log Analysis, Alert Tuning"},
+      {title:"Incident Response", desc:"Phishing, Malware, Endpoint Compromise"},
+      {title:"Tools", desc:"Splunk, ELK Stack, Security Onion, MS Sentinel"}
+    ],
+    projects:[
+      {title:"SOC Rules", desc:"SIEM alerts for brute-force, malware."},
+      {title:"IR Playbooks", desc:"Workflows for phishing, ransomware, endpoints."}
+    ],
+    experience:[
+      {title:"Cybersecurity Analyst", desc:"Detection rules, IR playbooks, monitoring."},
+      {title:"Freelance Consultant", desc:"Security monitoring & incident response."}
+    ],
+    certifications:[
+      {title:"CompTIA Security+", desc:"Foundational security cert"},
+      {title:"Splunk Core", desc:"Splunk Certified Analyst"},
+      {title:"CISM", desc:"Info Security Manager"}
+    ],
+    blogs:[
+      {title:"SIEM Tuning", desc:"Optimizing alerts and SOC efficiency."},
+      {title:"Endpoint Threat Detection", desc:"Detecting & containing malware."},
+      {title:"Blue Team Playbooks", desc:"Step-by-step defensive procedures."}
+    ],
+    hero: {
+      title:"Cybersecurity Analyst",
+      role:"Blue Team / SOC Specialist",
+      desc:"Skilled in Security Monitoring, SIEM, IDS/IPS, Incident Response, Malware Analysis, and Endpoint Protection. Experienced in creating alerts, playbooks, and SOC processes to mitigate threats effectively.",
+      team: "Blue Team"
+    }
+  }
+};
 
-        footer{
-            background-color:#0e0e1a;
-        }
 
-        .footer{
-            display: flex;
-            padding: 23px 122px;
-            justify-content: space-evenly;
-        }
+// Render cards
+function renderRole(role){
+  const mapGrid = (id, arr)=>{
+    const container = document.getElementById(id);
+    container.innerHTML='';
+    arr.forEach((item, i)=>{
+      const card = document.createElement('div');
+      card.className='card';
+      card.innerHTML=`<h3>${item.title}</h3><p>${item.desc}</p>`;
+      container.appendChild(card);
+    });
+    initObserver();
+  };
+  mapGrid('skillsGrid', roleData[role].skills);
+  mapGrid('projectsGrid', roleData[role].projects);
+  mapGrid('experienceGrid', roleData[role].experience);
+  mapGrid('certificationsGrid', roleData[role].certifications);
+  mapGrid('blogGrid', roleData[role].blogs);
 
-        .footer ul{
-            list-style: none;
-        }
+  // Update hero text
+  document.getElementById('heroTitle').childNodes[0].textContent = roleData[role].hero.title + ' ';
+  document.getElementById('heroSpan').textContent = roleData[role].hero.role;
+  document.getElementById('heroDesc').textContent = roleData[role].hero.desc;
+}
 
-        .footer > div{
-            width: 223px;
-        }
+// Fade-in on scroll
+function initObserver(){
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries, obs)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const card = entry.target;
+        setTimeout(()=>{ card.classList.add('fade-in'); }, Array.from(cards).indexOf(card)*150);
+        obs.unobserve(card);
+      }
+    });
+  }, { threshold:0.2 });
+  cards.forEach(card=>observer.observe(card));
+}
 
-        footer .footer-rights{
-            text-align: center;
-            color:gray;
-            padding: 12px 0;
-        }
+renderRole('offensive');
 
-        @media screen and (max-width: 1400px) {
+// Theme toggle with ripple + water drop
+toggleBtn.addEventListener('click', e=>{
+  body.classList.toggle('blue-theme');
+  const isBlue = body.classList.contains('blue-theme');
+  toggleBtn.textContent = isBlue ? 'Defensive' : 'Offensive';
+  renderRole(isBlue ? 'defensive' : 'offensive');
 
-            .box{
-                flex-direction: column;
-            }
+  // Ripple on button
+  const ripple = document.createElement('span');
+  ripple.className='ripple';
+  ripple.style.width = ripple.style.height = Math.max(toggleBtn.offsetWidth, toggleBtn.offsetHeight)+'px';
+  ripple.style.left = e.offsetX - ripple.offsetWidth/2 + 'px';
+  ripple.style.top = e.offsetY - ripple.offsetHeight/2 + 'px';
+  toggleBtn.appendChild(ripple);
+  setTimeout(()=>ripple.remove(),600);
 
-            .SecondSection .vertical{
-                height: unset;
-            }
-
-            .vertical-title, .vertical-desc{
-                left: 45px;
-            }
-
-            .SecondSection .box{
-                width: 80vw;
-            }
-
-            nav{
-                flex-direction: column;
-            }
-
-            .firstSection{
-                flex-direction: column-reverse;
-            }
-
-            .leftSection{
-                width: 100% !important;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .RightSection{
-                width: 721px !important;
-                display: flex;
-                justify-content: center;
-            }
-
-            .RightSection img{
-                width: 45vw;
-                margin-bottom: 73px;
-            }
-
-            .image-top{
-                top: 109px;
-            }
-
-            .SecondSection{
-                max-width: 80vw;
-                margin: auto;
-                height: 141vh;
-                display:flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            body{
-                min-width: fit-content;
-            }
-
-        } 
-        
-
-    </style>
-
-    </head>
-
-    <body>
-        <header>
-            <nav>
-                <div class="left">Hritik's Portfolio</div>
-                <div class="right">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/">About</a></li>
-                        <li><a href="/">Services</a></li>
-                        <li><a href="/">Projects</a></li>
-                        <li><a href="/">Contact Me</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-
-        <main>
-            <section class="firstSection">
-                <div class="leftSection">
-                    <div>Hi, My name is</div> <span class="purple">Hritik Arya</span>
-                    <div>and I am a passionate</div>
-                    <span id="element"></span>
-                    <div class="buttons">
-                        <button class="btn">Download Resume</button>
-                        <a href = 'https://github.com/Hritik-Cybersec/'></a>
-                        <button class="btn">
-                        Visit Github
-                    </button>
-                    </div>
-                </div>
-                <div class="RightSection">
-                    <img src="bg.png" alt srcset>
-                </div>
-            </section>
-
-            <hr>
-
-            <section class="SecondSection">
-                <span class="text-gray">What I have done so far</span>
-                <h1>Work Experience</h1>
-                <div class="box">
-                    <div class="vertical"> <!-- First Internship -->
-                        <img class="image-top" src="technohacks.png" alt>
-                        <div class="vertical-title">
-                            Cybersecurity<br>Intern<br>(Aug - Sept)
-                        </div>
-                        <div class="vertical-desc">
-                            Worked as Cyber Security Intern @ Technohacks for 1 Month
-                        </div>
-                    </div
-                    >
-                    <div class="vertical"> <!-- Second Internship -->
-                        <img class="image-top" src="Bharat Intern.png" alt>
-                        <div class="vertical-title">
-                            Web Developer<br>Intern<br>(Sept  - Oct)
-                        </div>
-                        <div class="vertical-desc">
-                            Worked as Web Developer Intern @ Technohacks for 1 Month
-                        </div>
-                    </div>
-
-                    <!-- <div class="vertical"> <!-- Third Internship 
-                        <img class="image-top" src="Insta.png".png" alt>
-                        <div class="vertical-title">
-                            HTML Developer (2015-2015)
-                        </div>
-                        <div class="vertical-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Tempora possimus illo aut eos cupiditate, iure
-                            rerum ipsa assumenda quam provident eum quod nostrum
-                            ad exercitationem cumque officia iusto rem qui!
-                        </div>
-                    </div>  -->
-                    <!-- <div class="vertical"> <!-- Fourth Internship 
-                        <img class="image-top" src="Facebook.png" alt>
-                        <div class="vertical-title">
-                            HTML Developer (2015-2016)
-                        </div>
-                        <div class="vertical-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Tempora possimus illo aut eos cupiditate, iure
-                            rerum ipsa assumenda quam provident eum quod nostrum
-                            ad exercitationem cumque officia iusto rem qui!
-                        </div>
-                    </div> -->
-                    <!-- <div class="vertical">  <!--Fifth Internship 
-                        <img class="image-top" src="Twitter.png" alt>
-                        <div class="vertical-title">
-                            HTML Developer (2016-2019)
-                        </div>
-                        <div class="vertical-desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Tempora possimus illo aut eos cupiditate, iure
-                            rerum ipsa assumenda quam provident eum quod nostrum
-                            ad exercitationem cumque officia iusto rem qui!
-                        </div>
-                    </div> -->
-                    <!-- <div class="vertical">  <!-- Sixth Internship 
-                        <img class="image-top" src="Youtube.png" alt>
-                        <div class="vertical-title">
-                            HTML Developer (2019-2020)
-                        </div>
-                        <div class="vertical-desc">
-                            Lorem ipsum dolor sit 
-                        </div> -->
-                    </div>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <div class="footer">
-                <div class="footer-first">
-                    <h3>Hritik's Portfolio</h3>
-                </div>
-            </div>
-            <div class="footer-rights">
-                Copyright &#169; | All Rights Reserved
-            </div>
-        </footer>
-
-        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-        <script>
-            
-        </script>
-        <!-- Setup and start animation! -->
-        <script>
-            var typed = new Typed('#element', {
-            strings: ['<i>Programmer</i>', '&amp;',' <i>Cybersecurity Specialist</i>'],
-            typeSpeed: 50,
-            
-        });
-        </script>
-    </body>
+  // Water drop effect
+  const drop = document.createElement('div');
+  drop.style.position='fixed'; drop.style.left='50%'; drop.style.top='50%'; drop.style.transform='translate(-50%,-50%)';
+  drop.style.width='0'; drop.style.height='0'; drop.style.borderRadius='50%';
+  drop.style.background=isBlue ? 'rgba(0,153,255,0.15)' : 'rgba(255,0,51,0.15)';
+  drop.style.zIndex='2000'; drop.style.transition='all 0.6s ease';
+  document.body.appendChild(drop);
+  setTimeout(()=>{ drop.style.width='2000px'; drop.style.height='2000px'; drop.style.opacity='0'; },50);
+  setTimeout(()=>{ drop.remove(); },650);
+});
+</script>
+</body>
 </html>
